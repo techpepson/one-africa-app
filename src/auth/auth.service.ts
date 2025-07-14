@@ -69,6 +69,7 @@ export class AuthService {
     const user = await this.prisma.user.findUnique({
       where: { email: payload.email },
     });
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.jwtService.signAsync({ email: user?.email, id: user?.id });
   }
 }
